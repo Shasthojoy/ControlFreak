@@ -1,0 +1,471 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lakhs</name>
+    </assembly>
+    <members>
+        <member name="T:Lakhs.Any">
+            <summary>
+            何も示さないことを表します。
+            </summary>
+        </member>
+        <member name="T:Lakhs.Disposer`1">
+            <summary>
+            Dispose が無い型への破棄を補助します。
+            </summary>
+            <typeparam name="T">破棄される値の型。</typeparam>
+        </member>
+        <member name="M:Lakhs.Disposer`1.#ctor(`0,System.Action{`0})">
+            <summary>
+            値と破棄処理を指定して、Lakhs.Disposer&lt;T&gt; クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="value">値。</param>
+            <param name="deleter">破棄処理。</param>
+        </member>
+        <member name="M:Lakhs.Disposer`1.Dispose">
+            <summary>
+            このインスタンスが使用しているすべてのリソースを解放します。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Disposer`1.ToString">
+            <summary>
+            現在の Lakhs.Disposer&lt;T&gt; を表す文字列を返します。
+            </summary>
+            <returns>現在の Lakhs.Disposer&lt;T&gt; を説明する文字列。</returns>
+        </member>
+        <member name="P:Lakhs.Disposer`1.Value">
+            <summary>
+            初期化時に指定された値を取得します。
+            </summary>
+        </member>
+        <member name="T:Lakhs.Disposer">
+            <summary>
+            Lakhs.Disposer&lt;T&gt; を作成する機能を提供します。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Disposer.Create``1(``0,System.Action{``0})">
+            <summary>
+            値と破棄処理を指定して、Lakhs.Disposer&lt;T&gt; クラスの新しいインスタンスを作成します。
+            </summary>
+            <param name="value">値。</param>
+            <param name="deleter">破棄処理。</param>
+        </member>
+        <member name="T:Lakhs.Extensions.EventHandlerExtensions">
+            <summary>
+            System.EventHandler, System.EventHandler&lt;T&gt; を補助する static メソッドを提供します。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Extensions.EventHandlerExtensions.Clear(System.EventHandler,System.Object,System.String)">
+            <summary>
+            対象のイベントハンドラにアタッチされたメソッドを削除します。
+            </summary>
+            <param name="source">メソッドがアタッチされているイベントハンドラ。</param>
+            <param name="owner">イベントのオーナー。</param>
+            <param name="eventName">イベント名。</param>
+            <returns>削除に成功したかどうかを表す Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Extensions.EventHandlerExtensions.Clear``1(System.EventHandler,System.Object,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            対象のイベントハンドラにアタッチされたメソッドを削除します。
+            </summary>
+            <typeparam name="T">式木に指定された関数の戻り値。</typeparam>
+            <param name="source">メソッドがアタッチされているイベントハンドラ。</param>
+            <param name="owner">イベントのオーナー。</param>
+            <param name="eventExpression">イベント名を表す式木。</param>
+            <returns>削除に成功したかどうかを表す Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Extensions.EventHandlerExtensions.Clear``1(System.EventHandler{``0},System.Object,System.String)">
+            <summary>
+            対象のイベントハンドラにアタッチされたメソッドを削除します。
+            </summary>
+            <typeparam name="T">イベントにより生成されるイベントデータの型。</typeparam>
+            <param name="source">メソッドがアタッチされているイベントハンドラ。</param>
+            <param name="owner">イベントのオーナー。</param>
+            <param name="eventName">イベント名。</param>
+            <returns>削除に成功したかどうかを表す Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Extensions.EventHandlerExtensions.Clear``2(System.EventHandler{``0},System.Object,System.Linq.Expressions.Expression{System.Func{``1}})">
+            <summary>
+            対象のイベントハンドラにアタッチされたメソッドを削除します。
+            </summary>
+            <typeparam name="T">イベントにより生成されるイベントデータの型。</typeparam>
+            <typeparam name="U">式木に指定された関数の戻り値。</typeparam>
+            <param name="source">メソッドがアタッチされているイベントハンドラ。</param>
+            <param name="owner">イベントのオーナー。</param>
+            <param name="eventExpression">イベント名を表す式木。</param>
+            <returns>削除に成功したかどうかを表す Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Extensions.ObjectExtensions.Solve``2(``0,System.Func{``0,``1})">
+            <summary>
+            値を新しい値に変換します。
+            </summary>
+            <typeparam name="TSource">変換前の型。</typeparam>
+            <typeparam name="TResult">solver によって返される値の型。</typeparam>
+            <param name="source">変換前の値。</param>
+            <param name="solver">値に適用する変換関数。</param>
+            <returns>source の値に対して変換関数を呼び出した結果として得られる Lakhs.Solver&lt;TSource,TResult&gt;。</returns>
+        </member>
+        <member name="T:Lakhs.Result`1">
+            <summary>
+            処理の結果を表します。
+            </summary>
+            <typeparam name="T">結果値の型。</typeparam>
+        </member>
+        <member name="M:Lakhs.Result`1.#ctor(System.Boolean)">
+            <summary>
+            成功したかどうかを示す値を指定して、Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.#ctor(System.Boolean,`0)">
+            <summary>
+            成功したかどうかを示す値･結果値を指定して、Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+            <param name="value">結果値。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.#ctor(System.Boolean,System.Exception)">
+            <summary>
+            成功したかどうかを示す値･例外を指定して、Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+            <param name="exception">例外。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.#ctor(System.Boolean,`0,System.Exception)">
+            <summary>
+            成功したかどうかを示す値･結果値･例外を指定して、Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+            <param name="value">結果値。</param>
+            <param name="exception">例外。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.op_True(Lakhs.Result{`0})">
+            <summary>
+            対象の結果が成功したかどうかを返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の結果が成功したかどうかを示す値。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.op_False(Lakhs.Result{`0})">
+            <summary>
+            対象の結果が失敗したかどうかを返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の結果が失敗したかどうかを示す値。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.op_LogicalNot(Lakhs.Result{`0})">
+            <summary>
+            対象の成功結果を反転した値を返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の成功結果を反転した値。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.op_Implicit(Lakhs.Result)~Lakhs.Result{`0}">
+            <summary>
+            Lakhs.Result と等しい Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="obj">変換対象の Lakhs.Result。</param>
+            <returns>Lakhs.Result を変換した Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.op_Implicit(Lakhs.Result{Lakhs.Any})~Lakhs.Result{`0}">
+            <summary>
+            Lakhs.Result&lt;Any&gt; と等しい Lakhs.Result&lt;T&gt; 構造体を作成します。
+            </summary>
+            <param name="obj">変換対象の Lakhs.Result&lt;Any&gt;。</param>
+            <returns>Lakhs.Result&lt;Any&gt; を変換した Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.IfSuccess(System.Action{`0})">
+            <summary>
+            成功している場合に、指定した処理を実行します。
+            </summary>
+            <param name="action">実行する System.Action&lt;T&gt; デリゲート。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.IfFailure(System.Action{System.Exception})">
+            <summary>
+            失敗している場合に、指定した処理を実行します。
+            </summary>
+            <param name="action">実行する System.Action&lt;Exception&gt; デリゲート。</param>
+        </member>
+        <member name="M:Lakhs.Result`1.Solve``1(System.Func{`0,``0})">
+            <summary>
+            値を新しい値に変換します。
+            </summary>
+            <typeparam name="T">変換前の型。</typeparam>
+            <typeparam name="TResult">solver によって返される値の型。</typeparam>
+            <param name="source">変換前の値。</param>
+            <param name="solver">値に適用する変換関数。</param>
+            <returns>結果値に対して変換関数を呼び出した結果として得られる Lakhs.Solver&lt;T,TResult&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.Equals(Lakhs.Result{`0})">
+            <summary>
+            このインスタンスと指定した Lakhs.Result&lt;T&gt; が等しいかどうかを示します。
+            </summary>
+            <param name="obj">比較対象のもう 1 つのオブジェクト。</param>
+            <returns>obj とこのインスタンスが同じ型で、同じ値を表している場合は true。それ以外の場合は false。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.Equals(System.Object)">
+            <summary>
+            このインスタンスと指定したオブジェクトが等しいかどうかを示します。
+            </summary>
+            <param name="obj">比較対象のもう 1 つのオブジェクト。</param>
+            <returns>obj とこのインスタンスが同じ型で、同じ値を表している場合は true。それ以外の場合は false。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.GetHashCode">
+            <summary>
+            対象のインスタンスのハッシュコードを返します。
+            </summary>
+            <returns>このインスタンスのハッシュコードである 32 ビット符号付き整数。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.GetValue(`0)">
+            <summary>
+            結果値を返します。結果が失敗している場合は failure で指定した値を返します。
+            </summary>
+            <param name="failure">結果が失敗している場合に戻す値。</param>
+            <returns>結果値。失敗している場合は failure で指定された値。</returns>
+        </member>
+        <member name="M:Lakhs.Result`1.Equals(System.Object,System.Object)">
+            <summary>
+            使用しないでください。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Result`1.ReferenceEquals(System.Object,System.Object)">
+            <summary>
+            使用しないでください。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Result`1.ToString">
+            <summary>
+            現在の Lakhs.Result&lt;T&gt; を表す文字列を返します。
+            </summary>
+            <returns>現在の Lakhs.Result&lt;T&gt; を表す文字列。</returns>
+        </member>
+        <member name="P:Lakhs.Result`1.Success">
+            <summary>
+            成功したかどうかを示す値を取得します。
+            </summary>
+        </member>
+        <member name="P:Lakhs.Result`1.Value">
+            <summary>
+            結果値を取得します。結果値が指定されていない場合はデフォルト値を返します。
+            </summary>
+        </member>
+        <member name="P:Lakhs.Result`1.Exception">
+            <summary>
+            例外を取得します。例外が指定されていない場合は null を返します。
+            </summary>
+        </member>
+        <member name="T:Lakhs.Result">
+            <summary>
+            処理の結果を表します。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Result.Try(System.Action)">
+            <summary>
+            指定された処理を実行し、成功したかどうかを表す Lakhs.Result 構造体を返します。
+            </summary>
+            <param name="f">実行する System.Action デリゲート。</param>
+            <returns>成功したかどうかを表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Try``1(System.Func{``0})">
+            <summary>
+            指定された処理を実行し、成功したかどうかを表す Lakhs.Result&lt;T&gt; 構造体を返します。
+            </summary>
+            <typeparam name="T">戻り値の型。</typeparam>
+            <param name="f">実行する System.Func&lt;T&gt; デリゲート。</param>
+            <returns>成功したかどうかを表す Lakhs.Result&lt;T&gt; 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Succeeded">
+            <summary>
+            成功を表す Lakhs.Result 構造体を返します。
+            </summary>
+            <returns>成功を表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Succeeded``1(``0)">
+            <summary>
+            指定した結果値を使用して、成功を表す Lakhs.Result&lt;T&gt; 構造体を返します。
+            </summary>
+            <typeparam name="T">結果値の型。</typeparam>
+            <param name="value">結果値。</param>
+            <returns>成功を表す Lakhs.Result&lt;T&gt; 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Failed">
+            <summary>
+            失敗を表す Lakhs.Result 構造体を返します。
+            </summary>
+            <returns>失敗を表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Failed(System.Exception)">
+            <summary>
+            指定した例外を使用して、失敗を表す Lakhs.Result 構造体を返します。
+            </summary>
+            <param name="exception">例外。</param>
+            <returns>失敗を表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Failed(System.String)">
+            <summary>
+            指定したエラーメッセージ使用して、失敗を表す Lakhs.Result 構造体を返します。
+            </summary>
+            <param name="message">エラーメッセージ。</param>
+            <returns>失敗を表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Failed(System.String,System.Exception)">
+            <summary>
+            指定したエラーメッセージと、この例外の原因である内部例外への参照を使用して、失敗を表す Lakhs.Result 構造体を返します。
+            </summary>
+            <param name="message">エラーメッセージ。</param>
+            <param name="innerException">現在の例外の原因である例外。</param>
+            <returns>失敗を表す Lakhs.Result 構造体。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Equals(System.Object,System.Object)">
+            <summary>
+            使用しないでください。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Result.ReferenceEquals(System.Object,System.Object)">
+            <summary>
+            使用しないでください。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Result.#ctor(System.Boolean)">
+            <summary>
+            成功したかどうかを示す値を指定して、Lakhs.Result 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+        </member>
+        <member name="M:Lakhs.Result.#ctor(System.Boolean,System.Exception)">
+            <summary>
+            成功したかどうかを示す値･例外を指定して、Lakhs.Result 構造体を作成します。
+            </summary>
+            <param name="success">成功したかどうかを示す値。</param>
+            <param name="exception">例外。</param>
+        </member>
+        <member name="M:Lakhs.Result.op_Implicit(Lakhs.Result{Lakhs.Any})~Lakhs.Result">
+            <summary>
+            Lakhs.Result&lt;Any&gt; と等しい Lakhs.Result 構造体を作成します。
+            </summary>
+            <param name="obj">変換対象の Lakhs.Result&lt;Any&gt;。</param>
+            <returns>Lakhs.Result&lt;Any&gt; を変換した Lakhs.Result。</returns>
+        </member>
+        <member name="M:Lakhs.Result.op_True(Lakhs.Result)">
+            <summary>
+            対象の結果が成功したかどうかを返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の結果が成功したかどうかを示す値。</returns>
+        </member>
+        <member name="M:Lakhs.Result.op_False(Lakhs.Result)">
+            <summary>
+            対象の結果が失敗したかどうかを返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の結果が失敗したかどうかを示す値。</returns>
+        </member>
+        <member name="M:Lakhs.Result.op_LogicalNot(Lakhs.Result)">
+            <summary>
+            対象の成功結果を反転した値を返します。
+            </summary>
+            <param name="obj">処理の結果。</param>
+            <returns>対象の成功結果を反転した値。</returns>
+        </member>
+        <member name="M:Lakhs.Result.IfSuccess(System.Action)">
+            <summary>
+            成功している場合に、指定した処理を実行します。
+            </summary>
+            <param name="action">実行する System.Action デリゲート。</param>
+        </member>
+        <member name="M:Lakhs.Result.IfFailure(System.Action{System.Exception})">
+            <summary>
+            失敗している場合に、指定した処理を実行します。
+            </summary>
+            <param name="action">実行する System.Action&lt;Exception&gt; デリゲート。</param>
+        </member>
+        <member name="M:Lakhs.Result.Equals(Lakhs.Result)">
+            <summary>
+            このインスタンスと指定した Lakhs.Result が等しいかどうかを示します。
+            </summary>
+            <param name="obj">比較対象のもう 1 つのオブジェクト。</param>
+            <returns>obj とこのインスタンスが同じ型で、同じ値を表している場合は true。それ以外の場合は false。</returns>
+        </member>
+        <member name="M:Lakhs.Result.Equals(System.Object)">
+            <summary>
+            このインスタンスと指定したオブジェクトが等しいかどうかを示します。
+            </summary>
+            <param name="obj">比較対象のもう 1 つのオブジェクト。</param>
+            <returns>obj とこのインスタンスが同じ型で、同じ値を表している場合は true。それ以外の場合は false。</returns>
+        </member>
+        <member name="M:Lakhs.Result.GetHashCode">
+            <summary>
+            対象のインスタンスのハッシュコードを返します。
+            </summary>
+            <returns>このインスタンスのハッシュコードである 32 ビット符号付き整数。</returns>
+        </member>
+        <member name="M:Lakhs.Result.ToString">
+            <summary>
+            現在の Lakhs.Result を表す文字列を返します。
+            </summary>
+            <returns>現在の Lakhs.Result を表す文字列。</returns>
+        </member>
+        <member name="P:Lakhs.Result.Success">
+            <summary>
+            成功したかどうかを示す値を取得します。
+            </summary>
+        </member>
+        <member name="P:Lakhs.Result.Exception">
+            <summary>
+            例外を取得します。例外が指定されていない場合は null を返します。
+            </summary>
+        </member>
+        <member name="T:Lakhs.Serialization.XmlSerializer">
+            <summary>
+            オブジェクトから XML 形式のバッファへのシリアル化および XML 形式のバッファからオブジェクトへの逆シリアル化を行います。
+            </summary>
+        </member>
+        <member name="M:Lakhs.Serialization.XmlSerializer.Serialize``1(``0,System.Xml.XmlWriterSettings)">
+            <summary>
+            指定した item をシリアル化し、XML 形式のバッファを返します。
+            </summary>
+            <typeparam name="T">item の型。</typeparam>
+            <param name="item">シリアル化するオブジェクト。</param>
+            <param name="settings">XML 形式に変換する際に使用する System.Xml.XmlWriterSettings。
+            これが null である場合は、既定の設定で System.Xml.XmlWriterSettings が使用されます。</param>
+            <returns>XML 形式のバッファを格納する System.Byte 配列。</returns>
+        </member>
+        <member name="M:Lakhs.Serialization.XmlSerializer.Deserialize``1(System.Byte[],System.Xml.XmlReaderSettings)">
+            <summary>
+            指定した XML 形式のバッファを逆シリアル化します。
+            </summary>
+            <typeparam name="T">戻り値の型。</typeparam>
+            <param name="buffer">逆シリアル化する XML 形式のバッファを格納している System.Byte 配列。</param>
+            <param name="settings">buffer を読み込む際に使用する System.Xml.XmlReaderSettings。</param>
+            <returns>逆シリアル化された T。</returns>
+        </member>
+        <member name="T:Lakhs.Solver`2">
+            <summary>
+            TSource に対する変換処理を保持します。
+            </summary>
+            <typeparam name="TSource">結果の型。</typeparam>
+            <typeparam name="TResult">処理後の型。</typeparam>
+        </member>
+        <member name="M:Lakhs.Solver`2.#ctor(`0,System.Func{`0,`1})">
+            <summary>
+            変換対象と変換関数を指定して、Lakhs.Solver&lt;TSource,TResult&gt; クラスの新しいインスタンスを初期化します。
+            </summary>
+            <param name="source">変換関数を呼び出す対象となる値。</param>
+            <param name="solver">値に適用する変換関数。</param>
+        </member>
+        <member name="M:Lakhs.Solver`2.Solve``1(System.Func{`1,``0})">
+            <summary>
+            値を新しい値に変換します。
+            </summary>
+            <typeparam name="TResult2">solver によって返される値の型。</typeparam>
+            <param name="solver">値に適用する変換関数。</param>
+            <returns>source の値に対して変換関数を呼び出した結果として得られる Lakhs.Solver&lt;TSource,TResult2&gt;。</returns>
+        </member>
+        <member name="M:Lakhs.Solver`2.Subscribe">
+            <summary>
+            変換関数を適用した結果の値を表す Lakhs.Result&lt;T&gt; を返します。
+            </summary>
+            <returns>変換関数を適用した結果の値を表す Lakhs.Result&lt;T&gt;。</returns>
+        </member>
+    </members>
+</doc>

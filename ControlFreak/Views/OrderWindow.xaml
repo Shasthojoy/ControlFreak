@@ -1,0 +1,108 @@
+﻿<Window x:Class="ControlFreak.Views.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:ControlFreak.Views.Converters"
+        Title="Send Window Message"
+        Height="212"
+        Width="450">
+    <Window.Resources>
+        <SolidColorBrush x:Key="BrushWatermarkForeground" Color="LightSteelBlue" />
+        <converters:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+    </Window.Resources>
+    
+    <Grid>
+        <!-- Message -->
+        <Label Content="Message"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="10,10,0,0"
+               Width="69" />
+
+        <ComboBox HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding Messages}"
+                  Margin="84,12,10,0"
+                  SelectedItem="{Binding SelectedItem}"
+                  VerticalAlignment="Top" />
+
+        <!-- wParam -->
+        <Label Content="wParam"
+        	   HorizontalAlignment="Left"
+        	   VerticalAlignment="Top"
+        	   Margin="10,43,0,0"
+        	   Width="69" />
+
+        <TextBlock Foreground="{StaticResource BrushWatermarkForeground}"
+                   Height="23"
+                   HorizontalAlignment="Stretch"
+                   Margin="86,47,10,0"
+                   Text="{Binding WParamFormat}"
+                   VerticalAlignment="Top">
+            <TextBlock.Visibility>
+                <MultiBinding Converter="{StaticResource TextInputToVisibilityConverter}">
+                    <Binding ElementName="txtWParam" Path="Text.IsEmpty" />
+                    <Binding ElementName="txtWParam" Path="IsFocused" />
+                </MultiBinding>
+            </TextBlock.Visibility>
+        </TextBlock>
+        
+        <TextBox x:Name="txtWParam"
+                 Background="Transparent"
+                 HorizontalAlignment="Stretch"
+                 Height="23"
+                 Margin="84,45,10,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding WParam}"
+                 VerticalAlignment="Top" />
+        
+        <!-- lParam -->
+        <Label Content="lParam"
+        	   HorizontalAlignment="Left"
+        	   VerticalAlignment="Top"
+        	   Margin="10,76,0,0"
+        	   Width="69" />
+
+        <TextBlock Foreground="{StaticResource BrushWatermarkForeground}"
+                   Height="23"
+                   HorizontalAlignment="Stretch"
+                   Margin="86,80,10,0"
+                   Text="{Binding LParamFormat}"
+                   VerticalAlignment="Top">
+            <TextBlock.Visibility>
+                <MultiBinding Converter="{StaticResource TextInputToVisibilityConverter}">
+                    <Binding ElementName="txtLParam" Path="Text.IsEmpty" />
+                    <Binding ElementName="txtLParam" Path="IsFocused" />
+                </MultiBinding>
+            </TextBlock.Visibility>
+        </TextBlock>
+
+        <TextBox x:Name="txtLParam"
+                 Background="Transparent"
+                 HorizontalAlignment="Stretch"
+                 Height="23"
+                 Margin="84,78,10,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding LParam}"
+                 VerticalAlignment="Top" />
+
+        <!-- Result -->
+        <Label Content="Result"
+        	   HorizontalAlignment="Left"
+        	   VerticalAlignment="Top"
+        	   Margin="10,109,0,0"
+        	   Width="69" />
+        
+        <Label Content="{Binding Result}"
+        	   HorizontalAlignment="Stretch"
+        	   VerticalAlignment="Top"
+        	   Margin="86,109,10,0"
+        	   Width="346" Height="28" />
+
+        <!-- Send -->
+        <Button Command="{Binding MessageSendCommand}"
+                Content="Send"
+                HorizontalAlignment="Right"
+                Margin="0,0,10,10"
+                VerticalAlignment="Bottom"
+                Width="75" />
+    </Grid>
+</Window>
